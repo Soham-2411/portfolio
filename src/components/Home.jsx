@@ -41,9 +41,9 @@ const Home = () => {
                             I build apps for mobile and web.
                         </h1>
                         <p className="description">
-                            I am a student at Concordia University, pursuing Masters in Applied Computer Science.
-                            I have a strong passion for development, particularly in the realm of front-end work.
-                            I develop mobile applications with Flutter and web applications using ReactJS.
+                        I am a graduate of Concordia University with a Master’s in Applied Computer Science. 
+                        I have a strong passion for development, working across the full stack to build impactful applications. 
+                        I develop mobile applications with Flutter and create dynamic, scalable web applications using ReactJS and backend technologies such as Spring Boot and Node.js.
                         </p>
                         <div className="home-buttons">
                             <button className="btn-primary" onClick={scrollToAbout}>

@@ -84,19 +84,19 @@ const About = () => {
                         <h3>Get to know me!</h3>
                         <div className="about-description">
                             <p>
-                                As a Front-end Developer, I construct the user interfaces for both mobile apps and
-                                websites, helping to the overall success of each product. You may explore the
-                                projects section to see examples of my work.
+                                As a Full Stack Developer, I design and build end-to-end solutions for both web and mobile platforms, 
+                                ensuring seamless user experiences and robust backend functionality. You can explore the projects section 
+                                to see examples of my work across a variety of technologies and domains.
                             </p>
                             <p>
-                                Applying my skills, I've actively participated in numerous hackathons, achieving
-                                success in several. My strength lies in exceptional team collaboration. Additionally,
-                                I have gained industry experience through internships in mobile development.
+                                Leveraging my skills in both frontend and backend development, I've participated in numerous hackathons, 
+                                earning recognition for innovative solutions and strong team collaboration. I have also gained valuable 
+                                industry experience through internships, working on mobile app development, backend systems, and 
+                                scalable data-driven applications.
                             </p>
                             <p>
-                                I'm open to Internship and job opportunities where I can contribute, learn and grow. If you
-                                have a good opportunity that matches my skills, then please do not hesitate to
-                                contact me.
+                                I’m open to internship and job opportunities where I can contribute, learn, and grow. 
+                                If you have an opportunity that matches my skills, please don’t hesitate to get in touch.
                             </p>
                         </div>
                         <button className="btn-primary" onClick={scrollToContact}>
