@@ -23,11 +23,8 @@ const Navbar = ({ activeSection }) => {
     }
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${activeSection === 'home' ? 'home-section' : ''}`}>
             <div className="nav-container">
-                <div className="nav-logo">
-                    <span>Soham Sakaria</span>
-                </div>
 
                 <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
                     {navItems.map((item) => (

@@ -10,12 +10,86 @@
     transition: all 0.3s ease;
 }
 
+/* White navbar on home section */
+.navbar.home-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar.home-section .nav-logo {
+    color: var(--accent-primary);
+}
+
+.navbar.home-section .nav-item {
+    color: #333333;
+}
+
+.navbar.home-section .nav-item:hover {
+    color: var(--accent-primary);
+    background: rgba(120, 67, 233, 0.1);
+}
+
+.navbar.home-section .nav-item.active {
+    color: var(--accent-primary);
+    background: rgba(120, 67, 233, 0.1);
+}
+
+.navbar.home-section .theme-toggle {
+    color: #333333;
+}
+
+.navbar.home-section .theme-toggle:hover {
+    color: var(--accent-primary);
+    background: rgba(120, 67, 233, 0.1);
+}
+
+.navbar.home-section .hamburger span {
+    background: #333333;
+}
+
+/* Dark mode navbar on home section */
+.dark .navbar.home-section {
+    background: rgba(26, 26, 26, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .navbar.home-section .nav-logo {
+    color: var(--accent-primary);
+}
+
+.dark .navbar.home-section .nav-item {
+    color: #ffffff;
+}
+
+.dark .navbar.home-section .nav-item:hover {
+    color: var(--accent-primary);
+    background: rgba(156, 39, 176, 0.1);
+}
+
+.dark .navbar.home-section .nav-item.active {
+    color: var(--accent-primary);
+    background: rgba(156, 39, 176, 0.1);
+}
+
+.dark .navbar.home-section .theme-toggle {
+    color: #ffffff;
+}
+
+.dark .navbar.home-section .theme-toggle:hover {
+    color: var(--accent-primary);
+    background: rgba(156, 39, 176, 0.1);
+}
+
+.dark .navbar.home-section .hamburger span {
+    background: #ffffff;
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -127,6 +201,15 @@
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
+    }
+
+    /* Mobile menu background for home section */
+    .navbar.home-section .nav-menu {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .dark .navbar.home-section .nav-menu {
+        background: rgba(26, 26, 26, 0.95);
     }
 
     .nav-menu.active {
