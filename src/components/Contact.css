@@ -1,9 +1,8 @@
 .contact {
-    padding: 6rem 0;
+    padding: 2rem 0;
     background: var(--bg-primary);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    min-height: auto !important;
+    display: block;
 }
 
 .contact-container {
@@ -13,10 +12,14 @@
 }
 
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.contact-social-section {
+    max-width: 500px;
+    text-align: center;
 }
 
 .contact-form-section h3,
@@ -31,7 +34,7 @@
 .contact-social-section p {
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .contact-form {
@@ -92,68 +95,52 @@
     cursor: not-allowed;
 }
 
-.social-links {
+.social-icons-row {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
 }
 
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-}
-
-.social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow-color);
-    color: var(--accent-primary);
-}
-
-.social-icon {
-    width: 40px;
-    height: 40px;
+.social-icon-link {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
+}
+
+.social-icon-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
     background: var(--gradient-primary);
-    border-radius: 8px;
+}
+
+.social-icon-link:hover svg {
     color: white;
 }
 
-.social-link span {
-    font-weight: 500;
-    font-size: 1rem;
-}
-
 @media (max-width: 768px) {
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
 
     .contact-form-section h3,
     .contact-social-section h3 {
         font-size: 1.5rem;
     }
 
-    .social-links {
-        gap: 0.75rem;
+    .social-icons-row {
+        gap: 1.5rem;
     }
 
-    .social-link {
-        padding: 0.75rem;
-    }
-
-    .social-icon {
-        width: 35px;
-        height: 35px;
+    .social-icon-link {
+        width: 45px;
+        height: 45px;
     }
 }

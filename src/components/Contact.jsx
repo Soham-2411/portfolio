@@ -1,34 +1,17 @@
-import { useState } from 'react'
 import './Contact.css'
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-
-        // Simulate form submission
-        setTimeout(() => {
-            setIsSubmitting(false)
-            setFormData({ name: '', email: '', message: '' })
-            alert('Thank you for your message! I will get back to you soon.')
-        }, 1000)
-    }
 
     const socialLinks = [
+        {
+            name: 'Email',
+            url: 'mailto:sohamsakaria@gmail.com',
+            icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            )
+        },
         {
             name: 'LinkedIn',
             url: 'https://www.linkedin.com/in/soham-sakaria-13251718b/',
@@ -76,67 +59,24 @@ const Contact = () => {
                 </div>
 
                 <div className="contact-content">
-                    <div className="contact-form-section">
+                    <div className="contact-social-section">
                         <h3>Get In Touch</h3>
                         <p>
                             I'm currently looking for new opportunities. Whether you have a question or just want to say hi,
-                            I'll try my best to get back to you!
+                            feel free to reach out!
                         </p>
 
-                        <form onSubmit={handleSubmit} className="contact-form">
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Your name"
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="Your email"
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    placeholder="Your message"
-                                    rows="4"
-                                    required
-                                ></textarea>
-                            </div>
-                            <button type="submit" className="btn-primary" disabled={isSubmitting}>
-                                {isSubmitting ? 'Sending...' : 'Send Message'}
-                            </button>
-                        </form>
-                    </div>
-
-                    <div className="contact-social-section">
-                        <h3>Connect With Me</h3>
-                        <p>Feel free to reach out to me on any of these platforms:</p>
-
-                        <div className="social-links">
+                        <div className="social-icons-row">
                             {socialLinks.map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="social-link"
+                                    className="social-icon-link"
+                                    title={social.name}
                                 >
-                                    <div className="social-icon">
-                                        {social.icon}
-                                    </div>
-                                    <span>{social.name}</span>
+                                    {social.icon}
                                 </a>
                             ))}
                         </div>
