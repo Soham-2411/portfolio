@@ -1,12 +1,18 @@
-# React + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio website showcasing my projects, skills, and experience.  
+🔗 **Live Site:** [sohamsakaria](https://sohamsakaria.vercel.app/)
 
-Currently, two official plugins are available:
+## 🚀 About Me
+I am Soham Sakaria, a Master's graduate in Applied Computer Science from Concordia University.  
+I specialize in backend engineering, full-stack development, and building scalable, reliable applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tech Stack
+- **Languages:** Java, Python, JavaScript, SQL/NoSQL  
+- **Frameworks:** Spring Boot, ReactJS, Node.js  
+- **Tools:** Git, Docker, CI/CD  
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔗 Links
+- [GitHub](https://github.com/Soham-2411)  
+- [LinkedIn](https://www.linkedin.com/in/soham-sakaria-13251718b/)  
+- 📧 [Email](mailto:soham.s2411@gmail.com)
