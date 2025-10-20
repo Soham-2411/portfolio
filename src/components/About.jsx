@@ -22,23 +22,48 @@ import ElasticLogo from '../assets/elastic.png'
 const About = () => {
     const skillsRef = useRef(null)
 
-    const skills = [
-        { name: 'React', logo: ReactLogo },
-        { name: 'JavaScript', logo: JSLogo },
-        { name: 'TypeScript', logo: TSLogo },
-        { name: 'Python', logo: PythonLogo },
-        { name: 'Java', logo: JavaLogo },
-        { name: 'C++', logo: CppLogo },
-        { name: 'Flutter', logo: FlutterLogo },
-        { name: 'Firebase', logo: FirebaseLogo },
-        { name: 'Node.js', logo: NodeLogo },
-        { name: 'Git', logo: GitLogo },
-        { name: 'Docker', logo: DockerLogo },
-        { name: 'Spring', logo: SpringLogo },
-        { name: 'MongoDB', logo: MongoLogo },
-        { name: 'PostgreSQL', logo: PostgresLogo },
-        { name: 'Supabase', logo: SupabaseLogo },
-        { name: 'Elasticsearch', logo: ElasticLogo }
+    const skillCategories = [
+        {
+            category: 'Frontend',
+            skills: [
+                { name: 'React', logo: ReactLogo },
+                { name: 'JavaScript', logo: JSLogo },
+                { name: 'TypeScript', logo: TSLogo }
+            ]
+        },
+        {
+            category: 'Backend',
+            skills: [
+                { name: 'Node.js', logo: NodeLogo },
+                { name: 'Spring', logo: SpringLogo },
+                { name: 'Python', logo: PythonLogo },
+                { name: 'Java', logo: JavaLogo },
+                { name: 'C++', logo: CppLogo }
+            ]
+        },
+        {
+            category: 'Mobile',
+            skills: [
+                { name: 'Flutter', logo: FlutterLogo }
+            ]
+        },
+        {
+            category: 'Database',
+            skills: [
+                { name: 'MongoDB', logo: MongoLogo },
+                { name: 'PostgreSQL', logo: PostgresLogo },
+                { name: 'Firebase', logo: FirebaseLogo },
+                { name: 'Supabase', logo: SupabaseLogo },
+                { name: 'Elasticsearch', logo: ElasticLogo }
+            ]
+        },
+        {
+            category: 'Tools',
+            skills: [
+                { name: 'Git', logo: GitLogo },
+                { name: 'Docker', logo: DockerLogo }
+            ]
+        }
     ]
 
     useEffect(() => {
@@ -107,31 +132,24 @@ const About = () => {
 
                 <div className="skills-section" ref={skillsRef}>
                     <h3>My Skills</h3>
-                    <div className="skills-scroll-container">
-                        <div className="skills-scroll">
-                            {/* First set of skills */}
-                            {skills.map((skill, index) => (
-                                <div key={`${skill.name}-1`} className="skill-item">
-                                    <img
-                                        src={skill.logo}
-                                        alt={skill.name}
-                                        className="skill-logo"
-                                    />
-                                    <span className="skill-name">{skill.name}</span>
+                    <div className="skills-categories">
+                        {skillCategories.map((category, categoryIndex) => (
+                            <div key={categoryIndex} className="skill-category">
+                                <h4 className="category-title">{category.category}</h4>
+                                <div className="skills-grid">
+                                    {category.skills.map((skill, skillIndex) => (
+                                        <div key={skillIndex} className="skill-item">
+                                            <img
+                                                src={skill.logo}
+                                                alt={skill.name}
+                                                className="skill-logo"
+                                            />
+                                            <span className="skill-name">{skill.name}</span>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                            {/* Duplicate set for seamless scrolling */}
-                            {skills.map((skill, index) => (
-                                <div key={`${skill.name}-2`} className="skill-item">
-                                    <img
-                                        src={skill.logo}
-                                        alt={skill.name}
-                                        className="skill-logo"
-                                    />
-                                    <span className="skill-name">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
