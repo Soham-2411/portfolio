@@ -71,7 +71,7 @@ const Experience = () => {
                     obs.unobserve(e.target)
                 }
             })
-        }, { threshold: 0.15 })
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' })
         ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
         return () => obs.disconnect()
     }, [])

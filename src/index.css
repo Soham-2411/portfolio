@@ -8,7 +8,7 @@
   --muted-2: #5a5346;
   --line: rgba(235, 228, 211, 0.10);
   --line-strong: rgba(235, 228, 211, 0.22);
-  --accent: #d48246;
+  --accent: #a85d25;
   --accent-ink: #0e0d0b;
   --selection: rgba(212, 130, 70, 0.28);
 
@@ -97,7 +97,11 @@ button {
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: -0.02em;
@@ -109,7 +113,10 @@ p {
   color: var(--fg);
 }
 
-img { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 /* shared section scaffolding */
 .section {
@@ -158,13 +165,16 @@ img { max-width: 100%; display: block; }
 .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 900ms cubic-bezier(.2,.6,.2,1), transform 900ms cubic-bezier(.2,.6,.2,1);
+  transition: opacity 900ms cubic-bezier(.2, .6, .2, 1), transform 900ms cubic-bezier(.2, .6, .2, 1);
 }
+
 .reveal.animate-in {
   opacity: 1;
   transform: none;
 }
 
 @media (max-width: 720px) {
-  body { font-size: 16px; }
+  body {
+    font-size: 16px;
+  }
 }

@@ -14,7 +14,7 @@ const Contact = () => {
                     obs.unobserve(e.target)
                 }
             })
-        }, { threshold: 0.15 })
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' })
         ref.current?.querySelectorAll('.reveal').forEach((el, i) => {
             el.style.transitionDelay = `${i * 80}ms`
             obs.observe(el)
@@ -33,8 +33,7 @@ const Contact = () => {
     const links = [
         { name: 'LinkedIn', url: 'https://www.linkedin.com/in/soham-sakaria-13251718b/', handle: '/in/soham-sakaria' },
         { name: 'GitHub', url: 'https://github.com/Soham-2411', handle: '@Soham-2411' },
-        { name: 'Twitter', url: 'https://twitter.com/SakariaSoh88674', handle: '@SakariaSoh88674' },
-        { name: 'LeetCode', url: 'https://leetcode.com/sohamsakaria/', handle: '/sohamsakaria' }
+        { name: 'Twitter', url: 'https://twitter.com/SakariaSoh88674', handle: '@SakariaSoh88674' }
     ]
 
     return (

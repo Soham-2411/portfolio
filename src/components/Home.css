@@ -129,6 +129,71 @@
     transform: scaleX(0.5);
 }
 
+/* socials row */
+.home-socials {
+    margin-top: 2rem !important;
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.socials-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+}
+.socials-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.85rem 0.5rem;
+    border: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg);
+    position: relative;
+    overflow: hidden;
+    transition: color 240ms ease, border-color 240ms ease;
+}
+.social-btn svg {
+    color: var(--muted);
+    transition: color 240ms ease, transform 320ms cubic-bezier(.2,.7,.1,1);
+}
+.social-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateY(101%);
+    transition: transform 420ms cubic-bezier(.2,.7,.1,1);
+    z-index: -1;
+}
+.social-btn:hover {
+    color: var(--accent-ink);
+    border-color: var(--accent);
+}
+.social-btn:hover svg {
+    color: var(--accent-ink);
+    transform: rotate(-6deg);
+}
+.social-btn:hover::before { transform: translateY(0); }
+
+@media (max-width: 520px) {
+    .social-btn span { display: none; }
+    .social-btn { padding: 0.55rem 0.7rem; }
+}
+
 /* --- RIGHT : terminal card --- */
 .home-right {
     display: flex;

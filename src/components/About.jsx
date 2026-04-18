@@ -58,7 +58,7 @@ const About = () => {
                     obs.unobserve(e.target)
                 }
             })
-        }, { threshold: 0.12 })
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' })
         ref.current?.querySelectorAll('.reveal').forEach((el, i) => {
             el.style.transitionDelay = `${(i % 6) * 70}ms`
             obs.observe(el)
