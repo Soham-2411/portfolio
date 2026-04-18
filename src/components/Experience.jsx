@@ -2,96 +2,120 @@ import { useEffect, useRef } from 'react'
 import './Experience.css'
 
 const Experience = () => {
-    const timelineRef = useRef(null)
+    const ref = useRef(null)
 
     const experiences = [
         {
-            id: 1,
-            title: 'Mitacs Globalink Research Internship',
-            company: 'Carleton University, Ottawa, Ontario',
-            period: 'Jul 2022 - Sep 2022',
+            id: 0,
+            role: 'Software Engineer',
+            title: 'Software Engineer',
+            company: 'CMiC',
+            location: 'Toronto, ON',
+            period: '2026 · Feb — Present',
             description: [
-                'Conducted research work under Professor David Thue on different definitions of the term "Game mechanics".',
-                'Made a platform for users to provide their own definition of the term using visual representations such as block diagrams.',
-                'Used the software Unity 3d to make the application which would be tested on the public.'
+                'Building features across the stack for enterprise construction software used by major North American contractors.',
+                'Working on web and platform modules, translating product requirements into shipped functionality.',
+                'Collaborating across design, product, and QA to deliver reliable, maintainable releases.'
             ],
-            type: 'left'
+            stack: ['Java', 'JavaScript', 'Oracle', 'Spring']
+        },
+        {
+            id: 1,
+            role: 'Research Intern',
+            title: 'Mitacs Globalink Research Internship',
+            company: 'Carleton University',
+            location: 'Ottawa, ON',
+            period: '2022 · Jul — Sep',
+            description: [
+                'Researched with Prof. David Thue on definitions of "game mechanics".',
+                'Built a Unity 3D platform for users to submit visual definitions as block diagrams.',
+                'Conducted user studies with public participants.'
+            ],
+            stack: ['Unity', 'C#', 'Research']
         },
         {
             id: 2,
+            role: 'Android Developer',
             title: 'Android App Developer',
-            company: 'Australia (Remote)',
-            period: 'Jul 2021 - Dec 2021',
+            company: 'Remote — Australia',
+            location: 'Remote',
+            period: '2021 · Jul — Dec',
             description: [
-                'Worked to participate in the development of a mobile app to track the non-documented clinical activity of the staff of Royal Brisbane and Women\'s Hospital.',
-                'Collaborated with 3 interns to develop an app to manage appointments for different patients with different doctors.',
-                'Made the application using Flutter software.'
+                'Developed a mobile app to track non-documented clinical activity at Royal Brisbane and Women\'s Hospital.',
+                'Collaborated with a team of 3 interns to ship patient–doctor appointment management.',
+                'Built the entire app in Flutter from design handoff to release.'
             ],
-            type: 'right'
+            stack: ['Flutter', 'Firebase', 'Dart']
         },
         {
             id: 3,
+            role: 'Flutter Developer',
             title: 'Flutter App Developer',
-            company: 'Mentor Match India, Chennai, Tamil Nadu',
-            period: 'Dec 2020 - Mar 2021',
+            company: 'Mentor Match India',
+            location: 'Chennai, IN',
+            period: '2020 · Dec — Mar',
             description: [
-                'Worked to participate in the development of a mobile app to track the non-documented clinical activity of the staff of Royal Brisbane and Women\'s Hospital.',
-                'Collaborated with 3 interns to develop an app to manage appointments for different patients with different doctors.',
-                'Made the application using Flutter software.'
+                'Built cross-platform modules for a mentorship matching platform.',
+                'Worked closely with founders to ship polished, user-tested flows.',
+                'Integrated Firebase backend for real-time messaging and data.'
             ],
-            type: 'left'
+            stack: ['Flutter', 'Firebase']
         }
     ]
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in')
-                    }
-                })
-            },
-            { threshold: 0.1 }
-        )
-
-        if (timelineRef.current) {
-            const timelineItems = timelineRef.current.querySelectorAll('.timeline-item')
-            timelineItems.forEach((item) => observer.observe(item))
-        }
-
-        return () => observer.disconnect()
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('animate-in')
+                    obs.unobserve(e.target)
+                }
+            })
+        }, { threshold: 0.15 })
+        ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
+        return () => obs.disconnect()
     }, [])
 
     return (
-        <section id="experience" className="experience">
-            <div className="experience-container">
-                <div className="section-header">
-                    <h2>Experience</h2>
-                    <div className="section-line"></div>
-                </div>
+        <section id="experience" className="section experience" ref={ref}>
+            <div className="section-inner">
+                <header className="exp-header">
+                    <div className="reveal eyebrow"><span>(03) · Work</span></div>
+                    <h2 className="reveal section-title">
+                        Places I've<br /><em>built</em> things.
+                    </h2>
+                </header>
 
-                <div className="timeline" ref={timelineRef}>
-                    {experiences.map((exp, index) => (
-                        <div key={exp.id} className={`timeline-item ${exp.type}`}>
-                            <div className="timeline-content">
-                                <div className="timeline-header">
-                                    <h3>{exp.title}</h3>
-                                    <div className="timeline-meta">
-                                        <span className="company">{exp.company}</span>
-                                        <span className="period">{exp.period}</span>
+                <ol className="exp-list">
+                    {experiences.map((exp, idx) => (
+                        <li className="reveal exp-item" key={exp.id}>
+                            <div className="exp-index">
+                                <span className="num">/{String(idx + 1).padStart(2, '0')}</span>
+                            </div>
+                            <div className="exp-body">
+                                <div className="exp-top">
+                                    <div>
+                                        <h3 className="exp-title">{exp.title}</h3>
+                                        <div className="exp-company">
+                                            <span>{exp.company}</span>
+                                            <span className="bullet">·</span>
+                                            <span>{exp.location}</span>
+                                        </div>
                                     </div>
+                                    <div className="exp-period">{exp.period}</div>
                                 </div>
-                                <ul className="timeline-description">
-                                    {exp.description.map((item, idx) => (
-                                        <li key={idx}>{item}</li>
+                                <ul className="exp-desc">
+                                    {exp.description.map((d, i) => (
+                                        <li key={i}>{d}</li>
                                     ))}
                                 </ul>
+                                <div className="exp-stack">
+                                    {exp.stack.map((s, i) => <span key={i}>{s}</span>)}
+                                </div>
                             </div>
-                            <div className="timeline-dot"></div>
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ol>
             </div>
         </section>
     )

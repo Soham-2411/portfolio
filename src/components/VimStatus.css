@@ -1,0 +1,120 @@
+.vim-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    height: 26px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    color: var(--fg);
+    user-select: none;
+    transition: background 300ms ease, border-color 300ms ease;
+}
+
+.vim-left, .vim-right, .vim-center {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+.vim-center {
+    justify-content: center;
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+.vim-right { justify-self: end; color: var(--muted); }
+
+.vim-mode {
+    padding: 4px 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--accent);
+    position: relative;
+    font-size: 10.5px;
+}
+.vim-bar.mode-command .vim-mode {
+    background: #c69a4d;
+}
+
+.vim-file {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    color: var(--muted);
+}
+.vim-filename { color: var(--fg-strong); }
+.vim-flag { color: var(--accent); margin-left: 4px; font-size: 10px; }
+.vim-sep { color: var(--muted-2); }
+.vim-branch { color: var(--fg); }
+.vim-os {
+    padding: 0 6px;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    line-height: 1.6;
+}
+.vim-branch::before {
+    content: "";
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: var(--accent);
+    border-radius: 999px;
+    margin-right: 0.4rem;
+    vertical-align: 1px;
+}
+
+.vim-hint kbd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 1px 5px;
+    margin: 0 2px;
+    color: var(--fg-strong);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    line-height: 1.4;
+}
+.vim-flash {
+    color: var(--accent);
+}
+.vim-cmd {
+    color: var(--fg-strong);
+    font-size: 12px;
+}
+.vim-caret {
+    display: inline-block;
+    width: 7px; height: 12px;
+    background: var(--fg-strong);
+    margin-left: 2px;
+    vertical-align: -1px;
+    animation: vim-blink 1s steps(2) infinite;
+}
+@keyframes vim-blink { 50% { opacity: 0; } }
+
+/* leave a little room at the bottom of content for the statusline */
+body { padding-bottom: 26px; }
+
+@media (max-width: 700px) {
+    .vim-hint { display: none; }
+    .vim-file .vim-sep { display: none; }
+    .vim-right span:nth-child(-n+3) { display: none; }
+}

@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './About.css'
 
-// Import all the skill logos
 import ReactLogo from '../assets/React.png'
 import JSLogo from '../assets/JS.png'
 import TSLogo from '../assets/TS.png'
@@ -20,132 +19,125 @@ import SupabaseLogo from '../assets/Supabase.png'
 import ElasticLogo from '../assets/elastic.png'
 
 const About = () => {
-    const skillsRef = useRef(null)
+    const ref = useRef(null)
 
     const skillCategories = [
-        {
-            category: 'Frontend',
-            skills: [
-                { name: 'React', logo: ReactLogo },
-                { name: 'JavaScript', logo: JSLogo },
-                { name: 'TypeScript', logo: TSLogo }
-            ]
-        },
-        {
-            category: 'Backend',
-            skills: [
-                { name: 'Node.js', logo: NodeLogo },
-                { name: 'Spring', logo: SpringLogo },
-                { name: 'Python', logo: PythonLogo },
-                { name: 'Java', logo: JavaLogo },
-                { name: 'C++', logo: CppLogo }
-            ]
-        },
-        {
-            category: 'Mobile',
-            skills: [
-                { name: 'Flutter', logo: FlutterLogo }
-            ]
-        },
-        {
-            category: 'Database',
-            skills: [
-                { name: 'MongoDB', logo: MongoLogo },
-                { name: 'PostgreSQL', logo: PostgresLogo },
-                { name: 'Firebase', logo: FirebaseLogo },
-                { name: 'Supabase', logo: SupabaseLogo },
-                { name: 'Elasticsearch', logo: ElasticLogo }
-            ]
-        },
-        {
-            category: 'Tools',
-            skills: [
-                { name: 'Git', logo: GitLogo },
-                { name: 'Docker', logo: DockerLogo }
-            ]
-        }
+        { category: 'Frontend', skills: [
+            { name: 'React', logo: ReactLogo },
+            { name: 'JavaScript', logo: JSLogo },
+            { name: 'TypeScript', logo: TSLogo }
+        ]},
+        { category: 'Backend', skills: [
+            { name: 'Node.js', logo: NodeLogo },
+            { name: 'Spring', logo: SpringLogo },
+            { name: 'Python', logo: PythonLogo },
+            { name: 'Java', logo: JavaLogo },
+            { name: 'C++', logo: CppLogo }
+        ]},
+        { category: 'Mobile', skills: [
+            { name: 'Flutter', logo: FlutterLogo }
+        ]},
+        { category: 'Database', skills: [
+            { name: 'MongoDB', logo: MongoLogo },
+            { name: 'PostgreSQL', logo: PostgresLogo },
+            { name: 'Firebase', logo: FirebaseLogo },
+            { name: 'Supabase', logo: SupabaseLogo },
+            { name: 'Elasticsearch', logo: ElasticLogo }
+        ]},
+        { category: 'Tools', skills: [
+            { name: 'Git', logo: GitLogo },
+            { name: 'Docker', logo: DockerLogo }
+        ]}
     ]
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in')
-                    }
-                })
-            },
-            { threshold: 0.1 }
-        )
-
-        if (skillsRef.current) {
-            observer.observe(skillsRef.current)
-        }
-
-        return () => observer.disconnect()
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('animate-in')
+                    obs.unobserve(e.target)
+                }
+            })
+        }, { threshold: 0.12 })
+        ref.current?.querySelectorAll('.reveal').forEach((el, i) => {
+            el.style.transitionDelay = `${(i % 6) * 70}ms`
+            obs.observe(el)
+        })
+        return () => obs.disconnect()
     }, [])
 
     const scrollToContact = () => {
-        const contactSection = document.getElementById('contact')
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' })
-        }
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
     }
 
     return (
-        <section id="about" className="about">
-            <div className="about-container">
-                <div className="section-header">
-                    <h2>About Me</h2>
-                    <div className="section-line"></div>
-                    <p>
-                        Here, you will find more information about me, what I do, and my current skills in terms
-                        of programming and technology.
-                    </p>
-                </div>
-
-                <div className="about-content">
-                    <div className="about-text">
-                        <h3>Get to know me!</h3>
-                        <div className="about-description">
-                            <p>
-                                As a Full Stack Developer, I design and build end-to-end solutions for both web and mobile platforms, 
-                                ensuring seamless user experiences and robust backend functionality. You can explore the projects section 
-                                to see examples of my work across a variety of technologies and domains.
-                            </p>
-                            <p>
-                                Leveraging my skills in both frontend and backend development, I've participated in numerous hackathons, 
-                                earning recognition for innovative solutions and strong team collaboration. I have also gained valuable 
-                                industry experience through internships, working on mobile app development, backend systems, and 
-                                scalable data-driven applications.
-                            </p>
-                            <p>
-                                I’m open to internship and job opportunities where I can contribute, learn, and grow. 
-                                If you have an opportunity that matches my skills, please don’t hesitate to get in touch.
-                            </p>
-                        </div>
-                        <button className="btn-primary" onClick={scrollToContact}>
-                            Contact
-                        </button>
+        <section id="about" className="section about" ref={ref}>
+            <div className="section-inner">
+                <header className="about-header">
+                    <div className="reveal eyebrow">
+                        <span>(02) · About</span>
                     </div>
+                    <h2 className="reveal section-title">
+                        A short <em>note</em> about me,<br />
+                        for the curious.
+                    </h2>
+                </header>
+
+                <div className="about-grid">
+                    <aside className="about-meta">
+                        <dl>
+                            <div><dt>Based in</dt><dd>Toronto, CA</dd></div>
+                            <div><dt>Degree</dt><dd>M.A.Sc, Concordia</dd></div>
+                            <div><dt>Focus</dt><dd>Full Stack · Mobile</dd></div>
+                            <div><dt>Currently</dt><dd><span className="dot" /> SWE @ CMiC</dd></div>
+                        </dl>
+                    </aside>
+
+                    <article className="about-prose">
+                        <p className="reveal lead">
+                            As a full stack developer, I design and build <em>end-to-end</em>
+                            products — web and mobile — where the user experience and the system
+                            underneath both feel deliberate.
+                        </p>
+                        <p className="reveal">
+                            I've competed in — and won — a handful of hackathons, shipped apps
+                            through internships in Canada, India, and remotely for teams in
+                            Australia, and spent time on research at Carleton University.
+                        </p>
+                        <p className="reveal">
+                            Today I'm a <em>Software Engineer at CMiC</em> in Toronto, working
+                            on enterprise software for the construction industry. Always happy
+                            to talk shop, compare notes, or just say hi —
+                        </p>
+                        <div className="reveal">
+                            <button className="btn-primary" onClick={scrollToContact}>
+                                Say Hello
+                            </button>
+                        </div>
+                    </article>
                 </div>
 
-                <div className="skills-section" ref={skillsRef}>
-                    <h3>My Skills</h3>
-                    <div className="skills-categories">
-                        {skillCategories.map((category, categoryIndex) => (
-                            <div key={categoryIndex} className="skill-category">
-                                <h4 className="category-title">{category.category}</h4>
-                                <div className="skills-grid">
-                                    {category.skills.map((skill, skillIndex) => (
-                                        <div key={skillIndex} className="skill-item">
-                                            <img
-                                                src={skill.logo}
-                                                alt={skill.name}
-                                                className="skill-logo"
-                                            />
-                                            <span className="skill-name">{skill.name}</span>
-                                        </div>
+                <div className="skills">
+                    <div className="reveal skills-head">
+                        <span className="eyebrow"><span>Stack · Index</span></span>
+                        <span className="skills-count">
+                            {skillCategories.reduce((n, c) => n + c.skills.length, 0).toString().padStart(2, '0')} tools
+                        </span>
+                    </div>
+
+                    <div className="skills-list">
+                        {skillCategories.map((cat, ci) => (
+                            <div className="reveal skill-row" key={ci}>
+                                <div className="skill-cat">
+                                    <span className="cat-num">{String(ci + 1).padStart(2, '0')}</span>
+                                    <span className="cat-name">{cat.category}</span>
+                                </div>
+                                <div className="skill-items">
+                                    {cat.skills.map((s, i) => (
+                                        <span className="skill-chip" key={i}>
+                                            <img src={s.logo} alt="" />
+                                            <span>{s.name}</span>
+                                        </span>
                                     ))}
                                 </div>
                             </div>
